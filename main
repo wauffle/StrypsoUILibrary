@@ -146,9 +146,9 @@ function lib:Window(text, preset, closebind)
             if io.KeyCode == CloseBind then
                 if uitoggled == false then
                     Main:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
-                    uitoggled = false
+                    uitoggled = true
                     wait(.5)
-                    knixhub.Enabled = true
+                    knixhub.Enabled = false
                 else
                     Main:TweenSize(
                         UDim2.new(0, 560, 0, 319),
@@ -157,13 +157,404 @@ function lib:Window(text, preset, closebind)
                         .6,
                         true
                     )
-                    knixhub.Enabled = false
-                    uitoggled = true
+                    knixhub.Enabled = true
+                    uitoggled = false
                 end
             end
         end
     )
+function lib:Window(text, preset, closebind)
+    CloseBind = closebind or Enum.KeyCode.RightShift
+    PresetColor = preset or Color3.fromRGB(44, 120, 224)
+    fs = false
+    local Main = Instance.new("Frame")
+    local TabHold = Instance.new("Frame")
+    local TabHoldLayout = Instance.new("UIListLayout")
+    local Title = Instance.new("TextLabel")
+    local TabFolder = Instance.new("Folder")
+    local DragFrame = Instance.new("Frame")
 
+    Main.Name = "Main"
+    Main.Parent = ui
+    Main.AnchorPoint = Vector2.new(0.5, 0.5)
+    Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    Main.BorderSizePixel = 0
+    Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Main.Size = UDim2.new(0, 0, 0, 0)
+    Main.ClipsDescendants = true
+    Main.Visible = true
+
+    TabHold.Name = "TabHold"
+    TabHold.Parent = Main
+    TabHold.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TabHold.BackgroundTransparency = 1.000
+    TabHold.Position = UDim2.new(0.0339285731, 0, 0.147335425, 0)
+    TabHold.Size = UDim2.new(0, 107, 0, 254)
+
+    TabHoldLayout.Name = "TabHoldLayout"
+    TabHoldLayout.Parent = TabHold
+    TabHoldLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    TabHoldLayout.Padding = UDim.new(0, 11)
+
+    Title.Name = "Title"
+    Title.Parent = Main
+    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Title.BackgroundTransparency = 1.000
+    Title.Position = UDim2.new(0.0339285731, 0, 0.0564263314, 0)
+    Title.Size = UDim2.new(0, 200, 0, 23)
+    Title.Font = Enum.Font.GothamSemibold
+    Title.Text = text
+    Title.TextColor3 = Color3.fromRGB(68, 68, 68)
+    Title.TextSize = 12.000
+    Title.TextXAlignment = Enum.TextXAlignment.Left
+
+    DragFrame.Name = "DragFrame"
+    DragFrame.Parent = Main
+    DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DragFrame.BackgroundTransparency = 1.000
+    DragFrame.Size = UDim2.new(0, 560, 0, 41)
+
+    Main:TweenSize(UDim2.new(0, 560, 0, 319), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+
+    MakeDraggable(DragFrame, Main)
+
+    local uitoggled = false
+    UserInputService.InputBegan:Connect(
+        function(io, p)
+            if io.KeyCode == CloseBind then
+                if uitoggled == false then
+                    Main:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+                    uitoggled = true
+                    wait(.5)
+                    knixhub.Enabled = false
+                else
+                    Main:TweenSize(
+                        UDim2.new(0, 560, 0, 319),
+                        Enum.EasingDirection.Out,
+                        Enum.EasingStyle.Quart,
+                        .6,
+                        true
+                    )
+                    knixhub.Enabled = true
+                    uitoggled = false
+                end
+            end
+        end
+    )
+function lib:Window(text, preset, closebind)
+    CloseBind = closebind or Enum.KeyCode.RightShift
+    PresetColor = preset or Color3.fromRGB(44, 120, 224)
+    fs = false
+    local Main = Instance.new("Frame")
+    local TabHold = Instance.new("Frame")
+    local TabHoldLayout = Instance.new("UIListLayout")
+    local Title = Instance.new("TextLabel")
+    local TabFolder = Instance.new("Folder")
+    local DragFrame = Instance.new("Frame")
+
+    Main.Name = "Main"
+    Main.Parent = ui
+    Main.AnchorPoint = Vector2.new(0.5, 0.5)
+    Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    Main.BorderSizePixel = 0
+    Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Main.Size = UDim2.new(0, 0, 0, 0)
+    Main.ClipsDescendants = true
+    Main.Visible = true
+
+    TabHold.Name = "TabHold"
+    TabHold.Parent = Main
+    TabHold.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TabHold.BackgroundTransparency = 1.000
+    TabHold.Position = UDim2.new(0.0339285731, 0, 0.147335425, 0)
+    TabHold.Size = UDim2.new(0, 107, 0, 254)
+
+    TabHoldLayout.Name = "TabHoldLayout"
+    TabHoldLayout.Parent = TabHold
+    TabHoldLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    TabHoldLayout.Padding = UDim.new(0, 11)
+
+    Title.Name = "Title"
+    Title.Parent = Main
+    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Title.BackgroundTransparency = 1.000
+    Title.Position = UDim2.new(0.0339285731, 0, 0.0564263314, 0)
+    Title.Size = UDim2.new(0, 200, 0, 23)
+    Title.Font = Enum.Font.GothamSemibold
+    Title.Text = text
+    Title.TextColor3 = Color3.fromRGB(68, 68, 68)
+    Title.TextSize = 12.000
+    Title.TextXAlignment = Enum.TextXAlignment.Left
+
+    DragFrame.Name = "DragFrame"
+    DragFrame.Parent = Main
+    DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DragFrame.BackgroundTransparency = 1.000
+    DragFrame.Size = UDim2.new(0, 560, 0, 41)
+
+    Main:TweenSize(UDim2.new(0, 560, 0, 319), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+
+    MakeDraggable(DragFrame, Main)
+
+    local uitoggled = false
+    UserInputService.InputBegan:Connect(
+        function(io, p)
+            if io.KeyCode == CloseBind then
+                if uitoggled == false then
+                    Main:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+                    uitoggled = true
+                    wait(.5)
+                    knixhub.Enabled = false
+                else
+                    Main:TweenSize(
+                        UDim2.new(0, 560, 0, 319),
+                        Enum.EasingDirection.Out,
+                        Enum.EasingStyle.Quart,
+                        .6,
+                        true
+                    )
+                    knixhub.Enabled = true
+                    uitoggled = false
+                end
+            end
+        end
+    )
+function lib:Window(text, preset, closebind)
+    CloseBind = closebind or Enum.KeyCode.RightShift
+    PresetColor = preset or Color3.fromRGB(44, 120, 224)
+    fs = false
+    local Main = Instance.new("Frame")
+    local TabHold = Instance.new("Frame")
+    local TabHoldLayout = Instance.new("UIListLayout")
+    local Title = Instance.new("TextLabel")
+    local TabFolder = Instance.new("Folder")
+    local DragFrame = Instance.new("Frame")
+
+    Main.Name = "Main"
+    Main.Parent = ui
+    Main.AnchorPoint = Vector2.new(0.5, 0.5)
+    Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    Main.BorderSizePixel = 0
+    Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Main.Size = UDim2.new(0, 0, 0, 0)
+    Main.ClipsDescendants = true
+    Main.Visible = true
+
+    TabHold.Name = "TabHold"
+    TabHold.Parent = Main
+    TabHold.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TabHold.BackgroundTransparency = 1.000
+    TabHold.Position = UDim2.new(0.0339285731, 0, 0.147335425, 0)
+    TabHold.Size = UDim2.new(0, 107, 0, 254)
+
+    TabHoldLayout.Name = "TabHoldLayout"
+    TabHoldLayout.Parent = TabHold
+    TabHoldLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    TabHoldLayout.Padding = UDim.new(0, 11)
+
+    Title.Name = "Title"
+    Title.Parent = Main
+    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Title.BackgroundTransparency = 1.000
+    Title.Position = UDim2.new(0.0339285731, 0, 0.0564263314, 0)
+    Title.Size = UDim2.new(0, 200, 0, 23)
+    Title.Font = Enum.Font.GothamSemibold
+    Title.Text = text
+    Title.TextColor3 = Color3.fromRGB(68, 68, 68)
+    Title.TextSize = 12.000
+    Title.TextXAlignment = Enum.TextXAlignment.Left
+
+    DragFrame.Name = "DragFrame"
+    DragFrame.Parent = Main
+    DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DragFrame.BackgroundTransparency = 1.000
+    DragFrame.Size = UDim2.new(0, 560, 0, 41)
+
+    Main:TweenSize(UDim2.new(0, 560, 0, 319), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+
+    MakeDraggable(DragFrame, Main)
+
+    local uitoggled = false
+    UserInputService.InputBegan:Connect(
+        function(io, p)
+            if io.KeyCode == CloseBind then
+                if uitoggled == false then
+                    Main:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+                    uitoggled = true
+                    wait(.5)
+                    knixhub.Enabled = false
+                else
+                    Main:TweenSize(
+                        UDim2.new(0, 560, 0, 319),
+                        Enum.EasingDirection.Out,
+                        Enum.EasingStyle.Quart,
+                        .6,
+                        true
+                    )
+                    knixhub.Enabled = true
+                    uitoggled = false
+                end
+            end
+        end
+    )
+    function lib:Window(text, preset, closebind)
+        CloseBind = closebind or Enum.KeyCode.RightShift
+        PresetColor = preset or Color3.fromRGB(44, 120, 224)
+        fs = false
+        local Main = Instance.new("Frame")
+        local TabHold = Instance.new("Frame")
+        local TabHoldLayout = Instance.new("UIListLayout")
+        local Title = Instance.new("TextLabel")
+        local TabFolder = Instance.new("Folder")
+        local DragFrame = Instance.new("Frame")
+    
+        Main.Name = "Main"
+        Main.Parent = ui
+        Main.AnchorPoint = Vector2.new(0.5, 0.5)
+        Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+        Main.BorderSizePixel = 0
+        Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+        Main.Size = UDim2.new(0, 0, 0, 0)
+        Main.ClipsDescendants = true
+        Main.Visible = true
+    
+        TabHold.Name = "TabHold"
+        TabHold.Parent = Main
+        TabHold.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TabHold.BackgroundTransparency = 1.000
+        TabHold.Position = UDim2.new(0.0339285731, 0, 0.147335425, 0)
+        TabHold.Size = UDim2.new(0, 107, 0, 254)
+    
+        TabHoldLayout.Name = "TabHoldLayout"
+        TabHoldLayout.Parent = TabHold
+        TabHoldLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        TabHoldLayout.Padding = UDim.new(0, 11)
+    
+        Title.Name = "Title"
+        Title.Parent = Main
+        Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Title.BackgroundTransparency = 1.000
+        Title.Position = UDim2.new(0.0339285731, 0, 0.0564263314, 0)
+        Title.Size = UDim2.new(0, 200, 0, 23)
+        Title.Font = Enum.Font.GothamSemibold
+        Title.Text = text
+        Title.TextColor3 = Color3.fromRGB(68, 68, 68)
+        Title.TextSize = 12.000
+        Title.TextXAlignment = Enum.TextXAlignment.Left
+    
+        DragFrame.Name = "DragFrame"
+        DragFrame.Parent = Main
+        DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        DragFrame.BackgroundTransparency = 1.000
+        DragFrame.Size = UDim2.new(0, 560, 0, 41)
+    
+        Main:TweenSize(UDim2.new(0, 560, 0, 319), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+    
+        MakeDraggable(DragFrame, Main)
+    
+        local uitoggled = false
+        UserInputService.InputBegan:Connect(
+            function(io, p)
+                if io.KeyCode == CloseBind then
+                    if uitoggled == false then
+                        Main:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+                        uitoggled = true
+                        wait(.5)
+                        knixhub.Enabled = false
+                    else
+                        Main:TweenSize(
+                            UDim2.new(0, 560, 0, 319),
+                            Enum.EasingDirection.Out,
+                            Enum.EasingStyle.Quart,
+                            .6,
+                            true
+                        )
+                        knixhub.Enabled = true
+                        uitoggled = false
+                    end
+                end
+            end
+        )
+    
+    function lib:Window(text, preset, openbind)
+        OpenBind = openbind or Enum.KeyCode.RightShift
+        PresetColor = preset or Color3.fromRGB(44, 120, 224)
+        fs = false
+        local Main = Instance.new("Frame")
+        local TabHold = Instance.new("Frame")
+        local TabHoldLayout = Instance.new("UIListLayout")
+        local Title = Instance.new("TextLabel")
+        local TabFolder = Instance.new("Folder")
+        local DragFrame = Instance.new("Frame")
+    
+        Main.Name = "Main"
+        Main.Parent = ui
+        Main.AnchorPoint = Vector2.new(0.5, 0.5)
+        Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+        Main.BorderSizePixel = 0
+        Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+        Main.Size = UDim2.new(0, 0, 0, 0)
+        Main.ClipsDescendants = true
+        Main.Visible = true
+    
+        TabHold.Name = "TabHold"
+        TabHold.Parent = Main
+        TabHold.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TabHold.BackgroundTransparency = 1.000
+        TabHold.Position = UDim2.new(0.0339285731, 0, 0.147335425, 0)
+        TabHold.Size = UDim2.new(0, 107, 0, 254)
+    
+        TabHoldLayout.Name = "TabHoldLayout"
+        TabHoldLayout.Parent = TabHold
+        TabHoldLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        TabHoldLayout.Padding = UDim.new(0, 11)
+    
+        Title.Name = "Title"
+        Title.Parent = Main
+        Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Title.BackgroundTransparency = 1.000
+        Title.Position = UDim2.new(0.0339285731, 0, 0.0564263314, 0)
+        Title.Size = UDim2.new(0, 200, 0, 23)
+        Title.Font = Enum.Font.GothamSemibold
+        Title.Text = text
+        Title.TextColor3 = Color3.fromRGB(68, 68, 68)
+        Title.TextSize = 12.000
+        Title.TextXAlignment = Enum.TextXAlignment.Left
+    
+        DragFrame.Name = "DragFrame"
+        DragFrame.Parent = Main
+        DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        DragFrame.BackgroundTransparency = 1.000
+        DragFrame.Size = UDim2.new(0, 560, 0, 41)
+    
+        Main:TweenSize(UDim2.new(0, 560, 0, 319), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+    
+        MakeDraggable(DragFrame, Main)
+    
+        local uitoggled = false
+        UserInputService.InputBegan:Connect(
+            function(io, p)
+                if io.KeyCode == CloseBind then
+                    if uitoggled == false then
+                        Main:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+                        uitoggled = true
+                        wait(.5)
+                        knixhub.Enabled = false
+                    else
+                        Main:TweenSize(
+                            UDim2.new(0, 560, 0, 319),
+                            Enum.EasingDirection.Out,
+                            Enum.EasingStyle.Quart,
+                            .6,
+                            true
+                        )
+                        knixhub.Enabled = true
+                        uitoggled = false
+                    end
+                end
+            end
+        )    
+    
     TabFolder.Name = "TabFolder"
     TabFolder.Parent = Main
 
